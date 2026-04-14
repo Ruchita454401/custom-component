@@ -2,7 +2,7 @@
   "definitions": [
     {
       "title": "Card",
-      "id": "card",
+      "id": "form-card",
       "plugins": {
         "xwalk": {
           "page": {
@@ -28,7 +28,7 @@
   ],
   "models": [
     {
-      "id": "card",
+      "id": "form-card",
       "fields": [
         {
           "component": "tab",
