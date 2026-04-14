@@ -14,3 +14,16 @@
   align-items: flex-start;
   gap: 12px;
 }
+
+.card .radio-wrapper picture {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.card .radio-wrapper picture img {
+  display: block;
+  width: 48px;
+  height: auto;
+  max-height: 32px;
+  object-fit: contain;
+}
