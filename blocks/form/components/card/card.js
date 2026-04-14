@@ -5,7 +5,7 @@ export default function decorate(element) {
 
   element.querySelectorAll('.radio-wrapper').forEach((radioWrapper) => {
     const image = createOptimizedPicture(
-      'https://main--afb--jalagari.hlx.live/lab/images/card.png',
+      '/blocks/form/components/card/images/card.png',
       'card-image',
     );
     radioWrapper.appendChild(image);
