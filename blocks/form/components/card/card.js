@@ -1,12 +1,12 @@
 import { createOptimizedPicture } from '../../../../scripts/aem.js';
 
-export default function decorate(element, fieldJson, container, formId) {
+export default function decorate(element) {
   element.classList.add('card');
 
   element.querySelectorAll('.radio-wrapper').forEach((radioWrapper) => {
     const image = createOptimizedPicture(
       '/blocks/form/components/card/images/card.png',
-      'card-image'
+      'card-image',
     );
     radioWrapper.appendChild(image);
   });
