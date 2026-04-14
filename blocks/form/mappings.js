@@ -3,6 +3,15 @@ import { loadCSS } from '../../scripts/aem.js';
 let customComponents = ['card', 'range'];
 const OOTBComponentDecorators = ['accordion', 'file', 'modal', 'password', 'rating', 'repeat', 'tnc', 'toggleable-link', 'wizard'];
 
+/** Authoring :type id → folder under blocks/form/components/ (when they differ). */
+const CUSTOM_COMPONENT_ALIASES = {
+  'form-card': 'card',
+};
+
+function resolveCustomComponentName(authoringType) {
+  return CUSTOM_COMPONENT_ALIASES[authoringType] || authoringType;
+}
+
 export function setCustomComponents(components) {
   customComponents = components;
 }
@@ -65,13 +74,14 @@ export default async function componentDecorator(element, fd, container, formId)
   // Default mappings (e.g., file-input) should always run AFTER custom/OOTB component
   // decorators to ensure custom component logic executes first.
   const { ':type': type = '', fieldType } = fd;
+  const customName = resolveCustomComponentName(type);
 
   if (type.endsWith('wizard')) {
     await loadComponent('wizard', element, fd, container, formId);
   }
 
-  if (getCustomComponents().includes(type) || getOOTBComponents().includes(type)) {
-    await loadComponent(type, element, fd, container, formId);
+  if (getCustomComponents().includes(customName) || getOOTBComponents().includes(type)) {
+    await loadComponent(customName, element, fd, container, formId);
   }
 
   if (fieldType === 'file-input') {
