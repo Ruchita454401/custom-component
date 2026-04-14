@@ -1,40 +1,14 @@
 import { createOptimizedPicture } from '../../../../scripts/aem.js';
-import { subscribe } from '../../rules/index.js';
 
-function createCard(element, enums) {
-  element.querySelectorAll('.radio-wrapper').forEach((radioWrapper, index) => {
-    if (enums[index]?.name) {
-      let label = radioWrapper.querySelector('label');
+export default function decorate(element) {
+  element.classList.add('card');
 
-      if (!label) {
-        label = document.createElement('label');
-        radioWrapper.appendChild(label);
-      }
-
-      label.textContent = enums[index]?.name;
-    }
+  element.querySelectorAll('.radio-wrapper').forEach((radioWrapper) => {
     const image = createOptimizedPicture(
-      enums[index]?.image || '/blocks/form/components/card/images/card.png',
+      'https://main--afb--jalagari.hlx.live/lab/images/card.png',
       'card-image',
     );
-
     radioWrapper.appendChild(image);
-  });
-}
-export default function decorate(element, fieldJson, container, formId) {
-  element.classList.add('card');
-  createCard(element, fieldJson.enum);
-
-  subscribe(element, formId, (fieldDiv, fieldModel) => {
-    fieldModel.subscribe((e) => {
-      const { payload } = e;
-
-      payload?.changes?.forEach((change) => {
-        if (change?.propertyName === 'enum') {
-          createCard(element, change.currentValue);
-        }
-      });
-    });
   });
 
   return element;
