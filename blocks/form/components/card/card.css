@@ -1,7 +1,6 @@
-/* Card option shell */
 .card .radio-wrapper {
-  min-width: 280px;
-  max-width: 360px;
+  min-width: 320px; /* or whatever width fits your design */
+  max-width: 340px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -12,26 +11,6 @@
   position: relative;
   transition: box-shadow 0.2s;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 16px;
-}
-
-/*
- * ISO/IEC 7810 ID-1 (credit card) physical ratio: 85.60mm × 53.98mm
- * Use ~1.586 : 1 so the graphic reads as a card, not an icon.
- */
-.card .radio-wrapper picture {
-  flex-shrink: 0;
-  line-height: 0;
-  width: 100%;
-  max-width: 100%;
-}
-
-.card .radio-wrapper picture img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 85.6 / 53.98;
-  object-fit: contain;
+  align-items: flex-start;
+  gap: 12px;
 }
