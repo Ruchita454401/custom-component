@@ -1,17 +1,45 @@
 import { createOptimizedPicture } from '../../../../scripts/aem.js';
+import { subscribe } from '../../rules/index.js';
 
-export default function decorate(element) {
-  element.classList.add('card');
-
+function createCard(element, enums) {
   const base = window.hlx?.codeBasePath || '';
-  const cardIconSrc = `${base}/blocks/form/components/card/images/card.png`;
+  const defaultCardImage = `${base}/blocks/form/components/card/images/card.png`;
 
-  element.querySelectorAll('.radio-wrapper').forEach((radioWrapper) => {
+  element.querySelectorAll('.radio-wrapper').forEach((radioWrapper, index) => {
+    if (enums[index]?.name) {
+      let label = radioWrapper.querySelector('label');
+
+      if (!label) {
+        label = document.createElement('label');
+        radioWrapper.appendChild(label);
+      }
+
+      label.textContent = enums[index]?.name;
+    }
+
     const image = createOptimizedPicture(
-      cardIconSrc,
-      'Payment card',
+      enums[index]?.image || defaultCardImage,
+      'card-image',
     );
+
     radioWrapper.appendChild(image);
+  });
+}
+
+export default function decorate(element, fieldJson, container, formId) {
+  element.classList.add('card');
+  createCard(element, fieldJson.enum);
+
+  subscribe(element, formId, (fieldDiv, fieldModel) => {
+    fieldModel.subscribe((e) => {
+      const { payload } = e;
+
+      payload?.changes?.forEach((change) => {
+        if (change?.propertyName === 'enum') {
+          createCard(element, change.currentValue);
+        }
+      });
+    });
   });
 
   return element;
