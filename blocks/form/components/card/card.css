@@ -14,14 +14,3 @@
   align-items: flex-start;
   gap: 12px;
 }
-
-/* Decorative thumb — no image URL or <picture> in JS */
-.card .radio-wrapper::before {
-  content: "";
-  flex-shrink: 0;
-  width: 96px;
-  height: 72px;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #eef2f7 0%, #dde4ee 50%, #cfd8e6 100%);
-}
-
