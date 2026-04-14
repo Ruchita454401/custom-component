@@ -1,0 +1,5 @@
+mountpoints:
+  /:
+    url: https://author-p148860-e338335-cmstg.adobeaemcloud.com/bin/franklin.delivery/Ruchita454401/custom-component/main
+    type: "markup"
+    suffix: ".html"
