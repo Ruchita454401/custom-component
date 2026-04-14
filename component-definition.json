@@ -687,7 +687,7 @@
         },
         {
           "title": "Card",
-          "id": "card",
+          "id": "form-card",
           "plugins": {
             "xwalk": {
               "page": {

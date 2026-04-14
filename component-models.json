@@ -3866,7 +3866,7 @@
     ]
   },
   {
-    "id": "card",
+    "id": "form-card",
     "fields": [
       {
         "component": "tab",
