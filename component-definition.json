@@ -635,6 +635,7 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fd690fd (Initial commit)
 =======
           "title": "Range",
@@ -681,6 +682,8 @@
         },
         {
 >>>>>>> 293a1aa (feat: add card custom component with local image asset)
+=======
+>>>>>>> 0b4562b (fix: remove duplicate card and range definitions from _form.json)
           "title": "Fragment",
           "id": "fragment",
           "plugins": {
